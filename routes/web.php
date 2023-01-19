@@ -18,4 +18,5 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+Route::get('admin/home', [App\Http\Controllers\CategoryController::class, 'index'])->name('admin.home')->middleware('is_admin');
+Route::resource('category', App\Http\Controllers\CategoryController::class)->middleware('is_admin');
